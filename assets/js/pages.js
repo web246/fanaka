@@ -450,6 +450,7 @@ function homeMarkup() {
         <div
           class="carousel"
           data-carousel
+          data-carousel-3d
           aria-label="Advice for your next chapter"
         >
           <div class="carousel__viewport">
@@ -518,6 +519,7 @@ function homeMarkup() {
         <div
           class="carousel carousel--expertise"
           data-carousel
+          data-carousel-3d
           aria-label="Our expertise"
         >
           <div class="carousel__viewport">
@@ -717,6 +719,7 @@ function homeMarkup() {
         <div
           class="carousel carousel--insights"
           data-carousel
+          data-carousel-3d
           aria-label="Latest insights"
         >
           <div class="carousel__viewport">

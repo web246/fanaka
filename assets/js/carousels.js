@@ -2,6 +2,8 @@ export function initCarousels() {
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
 
   document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+    if (carousel.hasAttribute("data-carousel-3d")) return;
+
     const track = carousel.querySelector("[data-carousel-track]");
     const toggle = carousel.querySelector("[data-carousel-toggle]");
     const directionButtons = carousel.querySelectorAll(

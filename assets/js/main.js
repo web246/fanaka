@@ -9,6 +9,7 @@ import { renderPage } from "./pages.js";
 import { initTransitions } from "./transitions.js";
 import { initHeroSlider } from "./hero-slider.js";
 import { initCarousels } from "./carousels.js";
+import { init3dCarousels } from "./carousel3d.js";
 
 const root = document.body.dataset.root || "";
 
@@ -59,6 +60,7 @@ async function startSite() {
       initDifferenceVideo();
       initHeroSlider();
       initCarousels();
+      init3dCarousels();
     }
   });
   renderPage(root);
