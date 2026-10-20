@@ -191,6 +191,6 @@ export async function initHeroScene() {
       { passive: true },
     );
   } catch {
-    /* WebGL or the optional CDN may be unavailable; the poster design remains complete. */
+    /* WebGL or the optional CDN may be unavailable; the video and text remain usable. */
   }
 }

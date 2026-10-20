@@ -81,34 +81,58 @@ export function initNavigation() {
     ?.setAttribute("aria-current", "page");
   const toggle = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".main-nav");
-  toggle?.addEventListener("click", () => {
-    const open = nav.classList.toggle("is-open");
+  const closeButton = nav?.querySelector(".menu-close");
+  const setMenuOpen = (open) => {
+    if (!nav || !toggle) return;
+    nav.classList.toggle("is-open", open);
     toggle.setAttribute("aria-expanded", String(open));
     toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     document.body.classList.toggle("menu-open", open);
+    if (!open) {
+      document
+        .querySelectorAll(".nav-group.is-open")
+        .forEach((group) => group.classList.remove("is-open"));
+      document
+        .querySelectorAll(".services-trigger[aria-expanded='true']")
+        .forEach((trigger) => trigger.setAttribute("aria-expanded", "false"));
+      if (nav.contains(document.activeElement)) toggle.focus();
+    } else {
+      closeButton?.focus();
+    }
+  };
+  toggle?.addEventListener("click", () => {
+    setMenuOpen(toggle.getAttribute("aria-expanded") !== "true");
   });
+  closeButton?.addEventListener("click", () => setMenuOpen(false));
   const services = document.querySelector(".services-trigger");
   services?.addEventListener("click", () => {
     const group = services.closest(".nav-group");
     const open = group.classList.toggle("is-open");
     services.setAttribute("aria-expanded", String(open));
   });
-  let lastY = 0;
   window.addEventListener(
     "scroll",
     () => {
       const y = window.scrollY;
       header?.classList.toggle("is-solid", y > 30);
-      if (y > 180 && y > lastY + 5) header?.classList.add("is-hidden");
-      else if (y < lastY - 5) header?.classList.remove("is-hidden");
-      lastY = y;
     },
     { passive: true },
   );
   document.addEventListener("click", (event) => {
-    if (event.target.closest(".main-nav a")) {
-      nav?.classList.remove("is-open");
-      toggle?.setAttribute("aria-expanded", "false");
+    if (
+      nav?.classList.contains("is-open") &&
+      !nav.contains(event.target) &&
+      !toggle?.contains(event.target)
+    ) {
+      setMenuOpen(false);
+    } else if (event.target instanceof Element && event.target.closest(".main-nav a")) {
+      setMenuOpen(false);
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && nav?.classList.contains("is-open")) {
+      setMenuOpen(false);
+      toggle?.focus();
     }
   });
 }

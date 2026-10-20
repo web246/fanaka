@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fanaka Noblewealth Advisory | Word Art Hero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green-950:#04201A; --green-900:#06342A; --green-800:#0B4A3A; --green-600:#12805F;
+    --gold-700:#9C7A2E; --gold-500:#C9A24B; --gold-400:#E0BE6A; --ivory:#FBF8F1;
+    --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;overflow:hidden;background:var(--green-950)}
+  body{font-family:var(--serif);color:var(--ivory)}
+
+  /* ---------- Stage ---------- */
+  .stage{
+    position:fixed;inset:0;overflow:hidden;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 45%, var(--green-800) 0%, var(--green-900) 45%, var(--green-950) 100%);
+    perspective:1400px;
+  }
+  .world{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .6s var(--ease)}
+  canvas{position:absolute;inset:0;width:100%;height:100%}
+
+  /* slow diagonal light sweep */
+  .sweep{
+    position:absolute;top:-20%;bottom:-20%;width:38%;left:-50%;
+    background:linear-gradient(100deg,transparent,rgba(224,190,106,.10),transparent);
+    transform:skewX(-18deg);animation:sweep 11s ease-in-out infinite;
+  }
+  @keyframes sweep{0%{left:-50%}55%,100%{left:130%}}
+
+  .vignette{
+    position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(ellipse at center,transparent 45%,rgba(2,14,11,.75) 100%);
+  }
+
+  /* ---------- Floor and ceiling word rings ---------- */
+  .ring{
+    position:absolute;left:50%;width:0;height:0;
+    transform-style:preserve-3d;
+  }
+  .ring.floor{top:96%;transform:rotateX(74deg)}
+  .ring.ceil{top:4%;transform:rotateX(-74deg)}
+  .spin{position:absolute;inset:0;transform-style:preserve-3d;animation:spin 90s linear infinite}
+  .ring.ceil .spin{animation-direction:reverse}
+  @keyframes spin{to{transform:rotateZ(360deg)}}
+  .ring span{
+    position:absolute;left:0;top:0;white-space:nowrap;
+    font-size:clamp(22px,4.2vw,64px);font-weight:700;font-style:italic;
+    color:transparent;-webkit-text-stroke:1px rgba(224,190,106,.38);
+    transform-origin:0 0;
+    transform:rotateZ(var(--a)) translateY(calc(var(--r) * -1)) translateX(-50%);
+    letter-spacing:.04em;
+  }
+
+  /* ---------- Main word sequence ---------- */
+  .scene{
+    position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;
+    padding:0 5vw;transform-style:preserve-3d;pointer-events:none;
+  }
+  .word{
+    display:flex;justify-content:center;flex-wrap:nowrap;
+    font-weight:700;line-height:1;letter-spacing:.01em;
+    font-size:clamp(56px,15.5vw,250px);
+    filter:drop-shadow(0 0 28px rgba(201,162,75,.35)) drop-shadow(0 8px 18px rgba(0,0,0,.45));
+    transform-style:preserve-3d;
+  }
+  .word.small{font-size:clamp(28px,5.6vw,92px);margin-top:.4em;font-weight:500}
+  .word i{
+    font-style:normal;display:inline-block;
+    background:linear-gradient(180deg,var(--gold-400) 0%,var(--gold-500) 55%,var(--gold-700) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    opacity:0;transform-origin:50% 100%;
+    transform:rotateX(-100deg) translateZ(-260px) translateY(70px);
+    filter:blur(10px);
+  }
+  .word i.sp{width:.28em}
+  .scene.in .word i{animation:letterIn 1s var(--ease) forwards;animation-delay:calc(var(--i) * 70ms + var(--d,0ms))}
+  .scene.out .word i{animation:letterOut .75s cubic-bezier(.6,0,.9,.4) forwards;animation-delay:calc(var(--i) * 28ms)}
+  @keyframes letterIn{
+    0%{opacity:0;transform:rotateX(-100deg) translateZ(-260px) translateY(70px);filter:blur(10px)}
+    60%{opacity:1;filter:blur(0)}
+    100%{opacity:1;transform:rotateX(0) translateZ(0) translateY(0);filter:blur(0)}
+  }
+  @keyframes letterOut{
+    0%{opacity:1;transform:none;filter:blur(0)}
+    100%{opacity:0;transform:rotateX(95deg) translateZ(220px) translateY(-60px);filter:blur(8px)}
+  }
+
+  /* translation line */
+  .gloss{
+    margin-top:.7em;font-size:clamp(18px,2.6vw,40px);font-style:italic;font-weight:500;
+    color:var(--ivory);letter-spacing:.06em;opacity:0;
+    transform:translateY(16px) rotateX(-40deg);
+  }
+  .scene.in .gloss{animation:glossIn 1s var(--ease) .95s forwards}
+  .scene.out .gloss{animation:glossOut .5s ease forwards}
+  @keyframes glossIn{to{opacity:.92;transform:none}}
+  @keyframes glossOut{from{opacity:.92}to{opacity:0;transform:translateY(-12px)}}
+
+  /* gold rule under the word */
+  .rule{
+    width:0;height:2px;margin-top:1.1em;
+    background:linear-gradient(90deg,transparent,var(--gold-400),transparent);
+  }
+  .scene.in .rule{animation:rule 1.2s var(--ease) .7s forwards}
+  .scene.out .rule{animation:ruleOut .5s ease forwards}
+  @keyframes rule{to{width:min(46vw,520px)}}
+  @keyframes ruleOut{from{width:min(46vw,520px);opacity:1}to{width:min(46vw,520px);opacity:0}}
+
+  /* hide scroll bars / cursor, allow pause hint */
+  .stage{cursor:none}
+
+  @media (prefers-reduced-motion:reduce){
+    .spin,.sweep{animation:none}
+    .scene .word i{animation:none!important;opacity:1;transform:none;filter:none}
+    .gloss{animation:none!important;opacity:.92;transform:none}
+    .rule{animation:none!important;width:min(46vw,520px)}
+  }
+</style>
+</head>
+<body>
+<div class="stage" id="stage" aria-label="Fanaka Noblewealth Advisory animated word art" role="img">
+  <div class="world" id="world">
+    <canvas id="dust">
+</canvas>
+    <div class="sweep">
+</div>
+    <div class="ring ceil" id="ringTop">
+<div class="spin">
+</div>
+</div>
+    <div class="ring floor" id="ringBot">
+<div class="spin">
+</div>
+</div>
+    <div id="slot">
+</div>
+  </div>
+  <div class="vignette">
+</div>
+</div>
+
+<script>
+(() => {
+  /* ===== Words: [main word, translation / line, optional small second line] ===== */
+  const scenes = [
+    { main:"Fanaka",    gloss:"Prosperity, advised with integrity" },
+    { main:"Utajiri",   gloss:"Wealth" },
+    { main:"Urithi",    gloss:"Legacy" },
+    { main:"Ukuaji",    gloss:"Growth" },
+    { main:"Uaminifu",  gloss:"Integrity" },
+    { main:"Fanaka",    small:"Noblewealth Advisory", gloss:"Wealth built with purpose. Legacy built to last." }
+  ];
+  const ringWords = ["Prosperity","Utajiri","Legacy","Urithi","Growth","Ukuaji",
+                     "Integrity","Uaminifu","Trust","Imani","Heritage","Hazina"];
+  const SCENE_MS = 4600, OUT_MS = 800;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ===== Build rings ===== */
+  function buildRing(el, offset){
+    const spin = el.querySelector(".spin");
+    const r = Math.min(innerWidth * 0.42, 620);
+    ringWords.forEach((w,i) => {
+      const s = document.createElement("span");
+      s.textContent = w;
+      s.style.setProperty("--a", (i * 360 / ringWords.length + offset) + "deg");
+      s.style.setProperty("--r", r + "px");
+      spin.appendChild(s);
+    });
+  }
+  buildRing(document.getElementById("ringTop"), 0);
+  buildRing(document.getElementById("ringBot"), 15);
+
+  /* ===== Letter splitter ===== */
+  function split(text, startIndex = 0){
+    const frag = document.createDocumentFragment();
+    [...text].forEach((ch, k) => {
+      const i = document.createElement("i");
+      i.textContent = ch === " " ? "\u00A0" : ch;
+      if (ch === " ") i.className = "sp";
+      i.style.setProperty("--i", startIndex + k);
+      frag.appendChild(i);
+    });
+    return frag;
+  }
+
+  /* ===== Scene player ===== */
+  const slot = document.getElementById("slot");
+  let idx = 0;
+
+  function play(){
+    const s = scenes[idx];
+    const el = document.createElement("div");
+    el.className = "scene";
+
+    const main = document.createElement("div");
+    main.className = "word";
+    main.appendChild(split(s.main));
+    el.appendChild(main);
+
+    if (s.small){
+      const sm = document.createElement("div");
+      sm.className = "word small";
+      sm.style.setProperty("--d","450ms");
+      sm.appendChild(split(s.small, 0));
+      el.appendChild(sm);
+    }
+    const rule = document.createElement("div"); rule.className = "rule"; el.appendChild(rule);
+    const g = document.createElement("div"); g.className = "gloss"; g.textContent = s.gloss; el.appendChild(g);
+
+    slot.appendChild(el);
+    void el.offsetWidth;
+    el.classList.add("in");
+
+    if (reduce){ idx = (idx + 1) % scenes.length; setTimeout(() => { el.remove(); play(); }, SCENE_MS); return; }
+
+    setTimeout(() => el.classList.replace("in","out"), SCENE_MS - OUT_MS);
+    setTimeout(() => { el.remove(); }, SCENE_MS);
+    idx = (idx + 1) % scenes.length;
+    setTimeout(play, SCENE_MS - 80);
+  }
+
+  const start = () => play();
+  (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(start);
+
+  /* ===== Mouse / tilt parallax (3D depth) ===== */
+  const world = document.getElementById("world");
+  addEventListener("pointermove", e => {
+    if (reduce) return;
+    const x = (e.clientX / innerWidth - .5), y = (e.clientY / innerHeight - .5);
+    world.style.transform = `rotateY(${x * 7}deg) rotateX(${-y * 5}deg)`;
+  });
+  addEventListener("pointerleave", () => world.style.transform = "");
+
+  /* ===== Gold dust particles ===== */
+  const cv = document.getElementById("dust"), ctx = cv.getContext("2d");
+  let W, H, DPR, parts = [];
+  function size(){
+    DPR = Math.min(devicePixelRatio || 1, 2);
+    W = cv.width = innerWidth * DPR; H = cv.height = innerHeight * DPR;
+    const n = Math.round(Math.min(120, innerWidth / 11));
+    parts = Array.from({length:n}, () => ({
+      x:Math.random()*W, y:Math.random()*H, z:Math.random(),
+      vy:(.15 + Math.random()*.5) * DPR, ph:Math.random()*6.28
+    }));
+  }
+  size(); addEventListener("resize", size);
+
+  function tick(t){
+    ctx.clearRect(0,0,W,H);
+    for (const p of parts){
+      p.y -= p.vy * (.4 + p.z);
+      p.x += Math.sin(t/2200 + p.ph) * .25 * DPR;
+      if (p.y < -10) { p.y = H + 10; p.x = Math.random()*W; }
+      const tw = .45 + .55 * Math.sin(t/700 + p.ph);
+      const r = (.6 + p.z * 2.4) * DPR;
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(224,190,106,${(.15 + p.z*.55) * tw})`;
+      ctx.shadowColor = "rgba(224,190,106,.8)"; ctx.shadowBlur = 6 * DPR * p.z;
+      ctx.arc(p.x, p.y, r, 0, 6.283); ctx.fill();
+    }
+    if (!reduce) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  /* pause work when the tab is hidden */
+  document.addEventListener("visibilitychange", () => {
+    document.querySelectorAll(".spin,.sweep").forEach(n =>
+      n.style.animationPlayState = document.hidden ? "paused" : "running");
+  });
+})();
+</script>
+</body>
+</html>

@@ -359,9 +359,20 @@ const breadcrumb = (name) =>
 
 function homeMarkup() {
   return html`<section class="hero hero--animated">
-      <canvas class="hero-canvas" data-hero-canvas aria-hidden="true"></canvas>
+      <video
+        class="hero__media"
+        data-hero-video
+        muted
+        loop
+        autoplay
+        playsinline
+        preload="metadata"
+        aria-hidden="true"
+        tabindex="-1"
+      >
+        <source src="${root()}assets/video/hero.mp4" type="video/mp4" />
+      </video>
       <div class="hero__shade"></div>
-      <div class="hero-crest" aria-hidden="true"><span>F</span><i></i></div>
       <div class="container hero__content">
         <span class="eyebrow" data-i18n="hero.eyebrow"
           >${t("hero.eyebrow")}</span
@@ -403,19 +414,19 @@ function homeMarkup() {
           <h2>Advice across the moments that matter.</h2>
         </div>
         <div class="service-intro__areas" aria-label="Our service areas">
-          <a href="${root()}services/retirement-planning.html"
+          <a data-tilt href="${root()}services/retirement-planning.html"
             ><span>01</span><strong>Pension</strong
             ><b aria-hidden="true">↗</b></a
           >
-          <a href="${root()}services/insurance-advisory.html"
+          <a data-tilt href="${root()}services/insurance-advisory.html"
             ><span>02</span><strong>Insurance</strong
             ><b aria-hidden="true">↗</b></a
           >
-          <a href="${root()}services/wealth-management.html"
+          <a data-tilt href="${root()}services/wealth-management.html"
             ><span>03</span><strong>Investments</strong
             ><b aria-hidden="true">↗</b></a
           >
-          <a href="${root()}services/corporate-advisory.html"
+          <a data-tilt href="${root()}services/corporate-advisory.html"
             ><span>04</span><strong>Corporate Trustee</strong
             ><b aria-hidden="true">↗</b></a
           >
@@ -564,7 +575,21 @@ function homeMarkup() {
               .join("")}
           </div>
         </div>
-        <div class="pillar-visual" aria-hidden="true"><span>F</span></div>
+        <div class="pillar-visual" aria-hidden="true">
+          <video
+            class="pillar-visual__video"
+            data-difference-video
+            muted
+            loop
+            autoplay
+            playsinline
+            preload="metadata"
+            tabindex="-1"
+          >
+            <source src="${root()}assets/video/difference.mp4" type="video/mp4" />
+          </video>
+          <span>F</span>
+        </div>
       </div>
     </section>
     <section class="section light-section">
@@ -1153,7 +1178,15 @@ function generalMarkup(page) {
               communication and a long-term view.
             </p>
           </div>
-          <div class="feature-image">Fanaka · Prosperity with purpose</div>
+          <div class="feature-image feature-image--motion">
+            <iframe
+              src="${root()}assets/video/video.html"
+              title="Fanaka prosperity and legacy animation"
+              loading="lazy"
+              scrolling="no"
+              tabindex="-1"
+            ></iframe>
+          </div>
         </div>
       </section>
       <section class="section alt-section">

@@ -22,8 +22,8 @@ The palette is defined in `assets/css/tokens.css`: deep forest greens, restraine
 
 ## Replace before launch
 
-- Hero assets: add `assets/video/hero.mp4` and `assets/video/hero.webm`. A branded `assets/video/hero-poster.svg` fallback is included; replace it with the supplied, optimised poster artwork when ready. Video files are only requested when present and are skipped on small or save-data devices.
-- Verify and replace the generated SVG logo and favicon with approved brand artwork as needed.
+- Homepage hero: `assets/video/hero.mp4` plays continuously as a muted, looping background. An optimised WebM source can be added if needed.
+- The supplied `assets/img/logo.png` is used throughout the site; `assets/img/favicon.png` uses its matching crest. Replace them only with approved brand artwork.
 - Confirm actual services offered and that each statement matches the firm's authorised scope.
 - Replace `[CLIENT COUNT]`, `[YEARS]`, `[KES X]B` and `[X]%` with substantiated figures, or remove the stats.
 - Remove the example testimonial or replace it with an approved, verifiable testimonial and required disclosures.

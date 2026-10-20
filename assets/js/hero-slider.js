@@ -16,7 +16,6 @@ export function initHeroSlider() {
   if (!copy || !title || !description || buttons.length !== slides.length)
     return;
 
-  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
   let activeSlide = 0;
   window.clearInterval(autoplayTimer);
 
@@ -47,7 +46,7 @@ export function initHeroSlider() {
 
   function startAutoplay() {
     stopAutoplay();
-    if (reducedMotion.matches || document.hidden) return;
+    if (document.hidden) return;
     autoplayTimer = window.setInterval(() => showSlide(activeSlide + 1), 6200);
   }
   restartAutoplay = startAutoplay;
@@ -60,12 +59,9 @@ export function initHeroSlider() {
     });
   });
 
-  copy.addEventListener("focusin", stopAutoplay);
-  copy.addEventListener("focusout", startAutoplay);
   if (!documentListenersBound) {
     documentListenersBound = true;
     document.addEventListener("visibilitychange", () => restartAutoplay());
-    reducedMotion.addEventListener?.("change", () => restartAutoplay());
   }
 
   showSlide(0);
