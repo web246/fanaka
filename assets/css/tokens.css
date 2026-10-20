@@ -1,0 +1,31 @@
+:root {
+  --green-950: #04201a;
+  --green-900: #06342a;
+  --green-800: #0b4a3a;
+  --green-600: #12805f;
+  --gold-500: #c9a24b;
+  --gold-400: #e0be6a;
+  --gold-700: #9c7a2e;
+  --ivory-50: #fbf8f1;
+  --ivory-100: #f3eee0;
+  --charcoal-900: #14201c;
+  --white: #ffffff;
+  --gold-gradient: linear-gradient(
+    115deg,
+    var(--gold-700),
+    var(--gold-400) 52%,
+    var(--gold-500)
+  );
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "DM Sans", "Segoe UI", sans-serif;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+  --space-6: 5rem;
+  --content-width: 1200px;
+  --radius: 4px;
+  --shadow: 0 18px 50px rgb(4 32 26 / 14%);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}

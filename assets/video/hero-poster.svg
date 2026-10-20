@@ -1,0 +1,58 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1920 1080"
+  role="img"
+  aria-label="Abstract forest-green and gold Fanaka brand artwork"
+>
+  <defs>
+    <radialGradient id="field">
+      <stop stop-color="#12805F" stop-opacity=".55" />
+      <stop offset="1" stop-color="#04201A" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="gold" x2="1" y2="1">
+      <stop stop-color="#9C7A2E" />
+      <stop offset=".5" stop-color="#E0BE6A" />
+      <stop offset="1" stop-color="#C9A24B" />
+    </linearGradient>
+    <pattern
+      id="lines"
+      width="72"
+      height="72"
+      patternUnits="userSpaceOnUse"
+      patternTransform="rotate(38)"
+    >
+      <path
+        d="M0 0V72"
+        stroke="#E0BE6A"
+        stroke-opacity=".08"
+        stroke-width="1"
+      />
+    </pattern>
+  </defs>
+  <rect width="1920" height="1080" fill="#04201A" />
+  <rect width="1920" height="1080" fill="url(#lines)" />
+  <ellipse cx="1370" cy="500" rx="650" ry="560" fill="url(#field)" />
+  <g fill="none" stroke="url(#gold)">
+    <path
+      d="M1370 125 1690 260v270c0 205-132 343-320 430-188-87-320-225-320-430V260z"
+      stroke-opacity=".5"
+      stroke-width="3"
+    />
+    <path
+      d="M1370 195 1620 300v220c0 158-96 265-250 341-154-76-250-183-250-341V300z"
+      stroke-opacity=".25"
+      stroke-width="2"
+    />
+    <path
+      d="M1480 355h-230v365h65V565h150v-58h-150v-94h165z"
+      stroke-width="5"
+    />
+  </g>
+  <g fill="#E0BE6A" opacity=".72">
+    <circle cx="1080" cy="190" r="4" />
+    <circle cx="1750" cy="720" r="3" />
+    <circle cx="1010" cy="755" r="2" />
+    <circle cx="1670" cy="165" r="2" />
+    <circle cx="1530" cy="850" r="4" />
+  </g>
+</svg>

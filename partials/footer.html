@@ -1,0 +1,203 @@
+<section class="newsletter">
+  <div class="container newsletter-inner">
+    <div>
+      <span class="eyebrow" data-i18n="newsletter.eyebrow"
+        >Notes on thoughtful wealth</span
+      >
+      <h2 data-i18n="newsletter.title">
+        A clearer view of your financial future.
+      </h2>
+    </div>
+    <form class="newsletter-form" data-local-form>
+      <label class="sr-only" for="newsletter-email">Email address</label
+      ><input
+        id="newsletter-email"
+        type="email"
+        required
+        placeholder="Your email address"
+        data-i18n-placeholder="form.emailPlaceholder"
+      /><button
+        class="btn btn--gold"
+        type="submit"
+        data-i18n="newsletter.submit"
+      >
+        Subscribe
+      </button>
+    </form>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="container footer-main">
+    <div>
+      <a class="brand" href="{{root}}index.html"
+        ><svg class="brand-mark" viewBox="0 0 48 54" aria-hidden="true">
+          <path
+            d="M24 2 43 10v16c0 12-8 20-19 26C13 46 5 38 5 26V10L24 2Z"
+            fill="none"
+            stroke="#C9A24B"
+            stroke-width="1.5"
+          />
+          <path d="M32 15H17v24h4V29h10v-4H21v-6h11v-4Z" fill="#E0BE6A" /></svg
+        ><span
+          ><span class="brand-name">FANAKA</span
+          ><span class="brand-sub">NOBLEWEALTH ADVISORY</span></span
+        ></a
+      >
+      <p data-i18n="footer.statement">
+        Prosperity, advised with integrity. Thoughtful guidance for the life and
+        legacy you are building.
+      </p>
+      <p class="footer-risk" data-i18n="footer.risk">
+        Investment values can rise or fall. Capital is at risk; no return is
+        guaranteed.
+      </p>
+    </div>
+    <div>
+      <h3 data-i18n="footer.services">Services</h3>
+      <div class="footer-links">
+        <a
+          href="{{root}}services/wealth-management.html"
+          data-i18n="service.wealth"
+          >Wealth management</a
+        ><a
+          href="{{root}}services/retirement-planning.html"
+          data-i18n="service.retirement"
+          >Retirement planning</a
+        ><a
+          href="{{root}}services/financial-planning.html"
+          data-i18n="service.financial"
+          >Financial planning</a
+        ><a
+          href="{{root}}services/corporate-advisory.html"
+          data-i18n="service.corporate"
+          >Corporate advisory</a
+        ><a
+          href="{{root}}services/estate-succession-planning.html"
+          data-i18n="service.estate"
+          >Estate & succession</a
+        ><a
+          href="{{root}}services/insurance-advisory.html"
+          data-i18n="service.insurance"
+          >Insurance advisory</a
+        >
+      </div>
+    </div>
+    <div>
+      <h3 data-i18n="footer.company">Company</h3>
+      <div class="footer-links">
+        <a href="{{root}}about.html" data-i18n="nav.about">About</a
+        ><a href="{{root}}insights.html" data-i18n="nav.insights">Insights</a
+        ><a href="{{root}}resources.html" data-i18n="nav.resources">Resources</a
+        ><a href="{{root}}careers.html" data-i18n="nav.careers">Careers</a
+        ><a href="{{root}}contact.html" data-i18n="nav.contact">Contact</a>
+      </div>
+    </div>
+    <div>
+      <h3 data-i18n="footer.contact">Get in touch</h3>
+      <p>Nairobi, Kenya</p>
+      <p>
+        For enquiries and consultation requests, please use our contact page.
+      </p>
+      <a href="{{root}}contact.html#booking" data-i18n="cta.speak"
+        >Speak to an advisor →</a
+      >
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>
+      © <span data-year>2026</span> Fanaka Noblewealth Advisory.
+      <span data-i18n="footer.rights">All rights reserved.</span>
+    </p>
+    <div class="footer-legal">
+      <a href="{{root}}legal/privacy-policy.html" data-i18n="legal.privacy"
+        >Privacy</a
+      ><a href="{{root}}legal/terms-of-use.html" data-i18n="legal.terms"
+        >Terms</a
+      ><a href="{{root}}legal/cookie-policy.html" data-i18n="legal.cookies"
+        >Cookies</a
+      ><a href="{{root}}legal/risk-disclosure.html" data-i18n="legal.risk"
+        >Risk disclosure</a
+      ><a
+        href="{{root}}legal/complaints-procedure.html"
+        data-i18n="legal.complaints"
+        >Complaints</a
+      ><button type="button" data-cookie-settings data-i18n="cookies.settings">
+        Cookie settings
+      </button>
+    </div>
+  </div>
+</footer>
+<div
+  class="cookie-banner"
+  data-cookie-banner
+  role="region"
+  aria-label="Cookie preferences"
+>
+  <p data-i18n="cookies.banner">
+    We use essential cookies to remember your preferences. Optional analytics
+    are off unless you agree.
+  </p>
+  <div class="cookie-actions">
+    <button type="button" data-cookie-reject data-i18n="cookies.reject">
+      Reject non-essential</button
+    ><button type="button" data-cookie-settings data-i18n="cookies.manage">
+      Manage preferences</button
+    ><button
+      type="button"
+      class="accept"
+      data-cookie-accept
+      data-i18n="cookies.accept"
+    >
+      Accept all
+    </button>
+  </div>
+</div>
+<div
+  class="modal-backdrop"
+  data-cookie-modal
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="cookie-modal-title"
+>
+  <div class="cookie-modal">
+    <h2 id="cookie-modal-title" data-i18n="cookies.title">
+      Cookie preferences
+    </h2>
+    <p data-i18n="cookies.modalIntro">
+      Choose which optional cookies you allow.
+    </p>
+    <label
+      ><span data-i18n="cookies.necessary">Strictly necessary</span
+      ><input type="checkbox" checked disabled /></label
+    ><label
+      ><span data-i18n="cookies.analytics">Analytics</span
+      ><input type="checkbox" data-cookie-category="analytics" /></label
+    ><label
+      ><span data-i18n="cookies.marketing">Marketing</span
+      ><input type="checkbox" data-cookie-category="marketing"
+    /></label>
+    <div class="hero__actions">
+      <button
+        class="btn btn--gold"
+        type="button"
+        data-cookie-save
+        data-i18n="cookies.save"
+      >
+        Save preferences</button
+      ><button
+        class="btn btn--dark-outline"
+        type="button"
+        data-cookie-close
+        data-i18n="cookies.close"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+<a
+  class="whatsapp-float"
+  href="{{root}}contact.html#booking"
+  aria-label="Request a consultation"
+  >✆</a
+>
