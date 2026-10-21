@@ -271,6 +271,51 @@
 .carousel__track > .card:nth-child(even) {
   transform: rotateY(-2.5deg) translateZ(0);
 }
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2.5vw, 2rem);
+  max-width: 960px;
+  margin-inline: auto;
+}
+.expertise-grid .card {
+  min-height: 270px;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: 10px;
+  box-shadow: 0 14px 34px rgb(4 32 26 / 8%);
+  animation: expertise-card-enter 650ms var(--ease) both;
+}
+.expertise-grid .card:nth-child(2) {
+  animation-delay: 140ms;
+}
+.expertise-grid .card:hover,
+.expertise-grid .card:focus-within {
+  transform: translateY(-7px);
+  border-color: var(--gold-500);
+  box-shadow: 0 24px 48px rgb(4 32 26 / 15%);
+}
+.expertise-grid .card__icon {
+  transition:
+    transform 350ms var(--ease),
+    background-color 350ms,
+    color 350ms;
+}
+.expertise-grid .card:hover .card__icon,
+.expertise-grid .card:focus-within .card__icon {
+  transform: rotate(-8deg) scale(1.08);
+  background: var(--green-800);
+  color: var(--gold-400);
+}
+@keyframes expertise-card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
 .carousel--3d .carousel__viewport {
   overflow: hidden;
   touch-action: pan-y;
@@ -789,6 +834,9 @@ body.is-transitioning .page-transition {
   }
 }
 @media (max-width: 800px) {
+  .expertise-grid .card {
+    min-height: 250px;
+  }
   .carousel--3d {
     --carousel-3d-card-width: min(78vw, 340px);
   }
@@ -836,6 +884,12 @@ body.is-transitioning .page-transition {
   }
 }
 @media (max-width: 500px) {
+  .expertise-grid {
+    grid-template-columns: 1fr;
+  }
+  .expertise-grid .card {
+    min-height: 0;
+  }
   .carousel--3d {
     --carousel-3d-card-width: min(84vw, 330px);
   }
@@ -979,6 +1033,16 @@ body.is-transitioning .page-transition {
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .expertise-grid .card {
+    animation: none;
+    transition: none;
+  }
+  .expertise-grid .card:hover,
+  .expertise-grid .card:focus-within,
+  .expertise-grid .card:hover .card__icon,
+  .expertise-grid .card:focus-within .card__icon {
+    transform: none;
+  }
   .carousel--3d .carousel__track > .card {
     transition: none;
   }

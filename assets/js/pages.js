@@ -379,9 +379,9 @@ const insightIcon = (kind) => {
   };
   return `<svg class="insight-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[kind] || paths.compass}</svg>`;
 };
-const linkCard = (href, title, copy, iconName = "compass") =>
-  `<article class="card" data-reveal data-tilt>${icon(iconName)}<h3>${title}</h3><p>${copy}</p><a class="card-link" href="${href}">${t("cta.learn", "Learn more →")}</a></article>`;
-const serviceCards = () => {
+const linkCard = (href, title, copy, iconName = "compass", { tilt = true } = {}) =>
+  `<article class="card" data-reveal${tilt ? " data-tilt" : ""}>${icon(iconName)}<h3>${title}</h3><p>${copy}</p><a class="card-link" href="${href}">${t("cta.learn", "Learn more →")}</a></article>`;
+const serviceCards = ({ tilt = true } = {}) => {
   const serviceIcons = {
     corporate: "business",
     training: "plan",
@@ -399,6 +399,7 @@ const serviceCards = () => {
         t(`service.${key}`, service.title),
         service.intro,
         serviceIcons[key],
+        { tilt },
       ));
     })
     .join("");
@@ -557,49 +558,7 @@ function homeMarkup() {
           <h2 data-i18n="home.servicesTitle">${t("home.servicesTitle")}</h2>
           <p>Connected guidance for the decisions that shape your future.</p>
         </div>
-        <div
-          class="carousel carousel--expertise"
-          data-carousel
-          data-carousel-3d
-          aria-label="Our expertise"
-        >
-          <div class="carousel__viewport">
-            <div class="carousel__track" data-carousel-track>
-              ${serviceCards()}
-            </div>
-          </div>
-          <div
-            class="carousel__controls"
-            role="group"
-            aria-label="Carousel controls"
-          >
-            <button
-              type="button"
-              data-carousel-direction="reverse"
-              aria-label="Move carousel backward"
-              title="Move backward"
-            >
-              ‹
-            </button>
-            <button
-              type="button"
-              data-carousel-toggle
-              aria-label="Pause carousel"
-              aria-pressed="false"
-              title="Pause motion"
-            >
-              Ⅱ
-            </button>
-            <button
-              type="button"
-              data-carousel-direction="normal"
-              aria-label="Move carousel forward"
-              title="Move forward"
-            >
-              ›
-            </button>
-          </div>
-        </div>
+        <div class="expertise-grid">${serviceCards({ tilt: false })}</div>
       </div>
     </section>
     <section class="section dark-section">
