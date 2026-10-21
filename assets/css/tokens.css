@@ -16,8 +16,9 @@
     var(--gold-400) 52%,
     var(--gold-500)
   );
-  --font-display: "Lato", "Segoe UI", sans-serif;
-  --font-body: "Lato", "Segoe UI", sans-serif;
+  --font-family: "Lato", sans-serif;
+  --font-display: var(--font-family);
+  --font-body: var(--font-family);
   --space-1: 0.5rem;
   --space-2: 1rem;
   --space-3: 1.5rem;

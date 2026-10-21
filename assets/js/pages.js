@@ -961,12 +961,7 @@ function serviceMarkup(key) {
           >${t("cta.book")}</a
         >
       </div>
-    </section>
-    <nav class="mobile-cta" aria-label="Quick contact">
-      <a href="${root()}services/corporate-trustee.html">Trustee</a
-      ><a href="${root()}contact.html#booking">Book</a
-      ><a href="${root()}services/financial-trainings.html">Training</a>
-    </nav>`;
+    </section>`;
 }
 
 const legalPages = {
@@ -1669,7 +1664,6 @@ export function renderPage(rootPath = "") {
       : "Services"
     : legalPages[page]?.title;
   if (title) document.title = `${title} | Fanaka Noblewealth Advisory`;
-  document.body.classList.toggle("has-mobile-cta", page.startsWith("service:"));
   document.dispatchEvent(
     new CustomEvent("fanaka:content-ready", {
       detail: { page, root: rootPath },
