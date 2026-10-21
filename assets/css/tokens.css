@@ -16,8 +16,8 @@
     var(--gold-400) 52%,
     var(--gold-500)
   );
-  --font-display: "Cormorant Garamond", Georgia, serif;
-  --font-body: "DM Sans", "Segoe UI", sans-serif;
+  --font-display: "Lato", "Segoe UI", sans-serif;
+  --font-body: "Lato", "Segoe UI", sans-serif;
   --space-1: 0.5rem;
   --space-2: 1rem;
   --space-3: 1.5rem;

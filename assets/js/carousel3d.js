@@ -81,7 +81,7 @@ export function init3dCarousels() {
 
     let activeIndex = 0;
     let timer;
-    let isVisible = false;
+    let isVisible = true;
     let isPaused = false;
     let startX = 0;
     let dragging = false;

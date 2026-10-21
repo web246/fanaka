@@ -1,44 +1,7 @@
 const serviceGroups = [
   {
-    title: "Pension",
-    href: "retirement-planning.html",
-    items: [
-      "Pension Administration Services",
-      "Umbrella Fund Solutions",
-      "Personal Pension Plan",
-      "Diaspora & Expatriates Fund",
-      "Kesho Held Income Drawdown Fund",
-      "Corporate Principal Officer",
-      "Corporate Trustee",
-      "Training Services",
-    ],
-  },
-  {
-    title: "Insurance",
-    href: "insurance-advisory.html",
-    items: [
-      "Personal Insurance",
-      "Corporate Insurance",
-      "Comprehensive Motor Insurance",
-      "Domestic Package Insurance",
-    ],
-  },
-  {
-    title: "Investments",
-    href: "wealth-management.html",
-    items: [
-      "Enwealth Money Market Fund",
-      "Enwealth Balanced Fund",
-      "Enwealth Equity Fund",
-      "Enwealth Fixed Income Fund",
-      "Enwealth Dollar Money Market Fund",
-      "Enwealth Capital Unit Trust Scheme FAQ's",
-      "Information Memorandum",
-    ],
-  },
-  {
     title: "Corporate Trustee",
-    href: "corporate-advisory.html",
+    href: "corporate-trustee.html",
     items: [
       "Retirement Benefits Schemes",
       "Collective Investment Schemes",
@@ -47,6 +10,12 @@ const serviceGroups = [
       "Employee Benefits Trust",
       "Consulting & Advisory",
     ],
+  },
+];
+const standaloneServices = [
+  {
+    title: "Financial Trainings",
+    href: "financial-trainings.html",
   },
 ];
 export function initNavigation() {
@@ -59,19 +28,28 @@ export function initNavigation() {
       .map(
         (group) => `
           <section class="mega-column">
-            <h2><a href="${root}services/${group.href}">${group.title}</a></h2>
+              <h2>${group.title}</h2>
             <ul>
               ${group.items
                 .map(
                   (item) =>
-                    `<li><a href="${root}services/${group.href}">${item}</a></li>`,
+                      `<li><a href="${root}services/corporate-trustee.html">${item}</a></li>`,
                 )
                 .join("")}
             </ul>
           </section>
         `,
       )
-      .join("");
+        .join("") +
+        standaloneServices
+          .map(
+            (service) => `
+              <a class="mega-service-link" href="${root}services/${service.href}">
+                ${service.title}<span aria-hidden="true">↗</span>
+              </a>
+            `,
+          )
+          .join("");
   const current =
     path.endsWith("/") || path.endsWith("index.html")
       ? "home"

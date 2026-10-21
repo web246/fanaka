@@ -9,7 +9,7 @@ Use VS Code Live Server and open `index.html` through its local server URL. The 
 ## Structure
 
 - `index.html` and root pages: home, about, contact, insights, resources, careers, 404 and thank-you.
-- `services/`: services overview and six dedicated service pages.
+- `services/`: services overview, Corporate Trustee and Financial Trainings pages.
 - `legal/`: privacy, terms, cookie, risk, complaints and disclaimer drafts.
 - `partials/`: shared header and footer markup.
 - `assets/css/`: design tokens, base styles, shared components, layout and page styles.
@@ -18,7 +18,7 @@ Use VS Code Live Server and open `index.html` through its local server URL. The 
 
 ## Design system
 
-The palette is defined in `assets/css/tokens.css`: deep forest greens, restrained gold, warm ivory, charcoal and white. Display type uses Cormorant Garamond; interface/body type uses DM Sans. Shared components include gold and outline actions, service cards, accordions, forms, consent preferences, process timelines and CTA bands. The layout is mobile-first and honors reduced-motion preferences.
+The palette is defined in `assets/css/tokens.css`: deep forest greens, restrained gold, warm ivory, charcoal and white. Lato is used consistently for headings, body copy and interface text. Shared components include gold and outline actions, service cards, accordions, forms, consent preferences, process timelines and CTA bands. The layout is mobile-first and honors reduced-motion preferences.
 
 ## Replace before launch
 

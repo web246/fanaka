@@ -138,48 +138,94 @@ const services = {
     ],
   },
   corporate: {
-    title: "Corporate & Business Advisory",
-    titleSw: "Ushauri kwa Biashara na Mashirika",
+    title: "Corporate Trustee",
+    titleSw: "Udhamini wa Mashirika",
     intro:
-      "Give your organisation a clearer view of financial priorities, employee benefits and long-term resilience.",
+      "Corporate trustee support for retirement benefits schemes, collective investment schemes, family trusts and employee benefit arrangements.",
     introSw:
-      "Ipe biashara yako mtazamo ulio wazi kuhusu vipaumbele vya kifedha, mafao ya wafanyakazi na uimara wa muda mrefu.",
-    what: "We support business owners and organisations with financial planning conversations, employee financial wellbeing and selected corporate advisory needs. Scope, deliverables and any regulated activity are confirmed before work begins.",
-    who: "SMEs, established businesses, professional practices, employers and institutions reviewing financial wellbeing or planning needs.",
+      "Usaidizi huru wa udhamini kwa mifuko ya mafao ya kustaafu, mifuko ya uwekezaji wa pamoja, trast za familia na mipango ya mafao ya wafanyakazi.",
+    what: "Corporate trustee services support the governance and oversight of retirement benefits schemes, collective investment schemes, family trusts, employee share ownership plans (ESOPs) and employee benefits trusts. The scope of each engagement, responsibilities and deliverables are agreed before work begins.",
+    who: "Organisations, scheme sponsors, trustees and families seeking corporate trustee, ESOP management, employee benefits trust, consulting or advisory support.",
     benefits: [
-      "A structured view of business and owner priorities",
-      "Support exploring employee pension and benefits questions",
-      "Planning for cash flow and key business milestones",
-      "Clear engagement scope and review points",
+      "Governance and oversight support for relevant schemes and trusts",
+      "A clear view of trustee responsibilities and processes",
+      "Support for ESOP and employee benefits trust arrangements",
+      "Agreed engagement scope, deliverables and review points",
     ],
     steps: [
-      "Understand the organisation and its objectives",
-      "Define the scope, stakeholders and information needed",
-      "Present considered options and next steps",
-      "Review delivery and emerging needs",
+      "Understand the scheme, trust or organisation",
+      "Agree the scope, stakeholders and responsibilities",
+      "Deliver the agreed trustee, consulting or advisory support",
+      "Review governance needs and agreed next steps",
     ],
     example:
-      "A growing Kenyan employer wants to review how staff understand their retirement benefits. A facilitated needs assessment can inform an appropriate programme. This example is illustrative, not a claim of past results.",
+      "A scheme sponsor seeking trustee support can discuss its governance needs, stakeholder responsibilities and required scope with us before an engagement is agreed. This example is illustrative only.",
     faqs: [
       [
-        "Do you provide company valuations?",
-        "Contact us to discuss whether a valuation requirement is within the scope of an advisory engagement.",
+        "Which schemes or trusts do you support?",
+        "Our Corporate Trustee services cover retirement benefits schemes, collective investment schemes, family trusts, ESOP management and employee benefits trusts, subject to an agreed engagement scope.",
       ],
       [
-        "Can you advise on employee pensions?",
-        "We can discuss planning and employee education needs; scheme advice depends on the firm's authorised scope.",
+        "Do you offer consulting and advisory support?",
+        "Yes. The scope, responsibilities and deliverables are discussed and agreed before work begins.",
       ],
       [
-        "Do you serve SMEs?",
-        "The service is designed to discuss needs across organisations; engagement suitability is confirmed first.",
+        "Do you manage ESOPs?",
+        "ESOP management is among our Corporate Trustee service areas. Contact us to discuss your organisation's requirements.",
       ],
       [
-        "Can you work with our existing advisers?",
-        "With your permission, coordination with your existing professional advisers may be possible.",
+        "How do we begin?",
+        "Contact us to discuss the scheme or trust, the support required and the proposed scope of work.",
       ],
       [
-        "Are outcomes guaranteed?",
-        "No. Advice and planning cannot guarantee financial or business outcomes.",
+        "Are investment or scheme outcomes guaranteed?",
+        "No. Investment values and scheme outcomes can vary; no return or outcome is guaranteed.",
+      ],
+    ],
+  },
+  training: {
+    title: "Financial Trainings",
+    titleSw: "Mafunzo ya Kifedha",
+    intro:
+      "Practical financial learning for individuals, teams and organisations, shaped around their needs and goals.",
+    introSw:
+      "Mafunzo ya vitendo ya kifedha kwa watu binafsi, timu na mashirika, yanayolingana na mahitaji na malengo yao.",
+    what: "Our financial trainings help participants build knowledge and confidence around financial topics. Training content, format and learning objectives are discussed and agreed with each client before delivery.",
+    who: "Individuals, teams, employers and organisations looking to strengthen financial knowledge and wellbeing.",
+    benefits: [
+      "Training shaped around participant needs and learning objectives",
+      "Practical discussions in clear, accessible language",
+      "A format agreed for your team or organisation",
+      "Clear scope and expectations before delivery",
+    ],
+    steps: [
+      "Discuss your audience and learning needs",
+      "Agree topics, format and learning objectives",
+      "Deliver the agreed training",
+      "Review feedback and possible next steps",
+    ],
+    example:
+      "An organisation can discuss a financial learning session for its team, including audience, topics and preferred format. This example is illustrative only.",
+    faqs: [
+      [
+        "Who can attend financial trainings?",
+        "Training can be discussed for individuals, teams and organisations.",
+      ],
+      [
+        "Can training be tailored to our organisation?",
+        "Yes. Topics, format and learning objectives are agreed before delivery.",
+      ],
+      [
+        "Which topics are covered?",
+        "Contact us to discuss the learning goals and topics relevant to your audience.",
+      ],
+      [
+        "Are trainings delivered in person or online?",
+        "The format is discussed and agreed based on your needs.",
+      ],
+      [
+        "Do trainings provide personalised financial advice?",
+        "Training is educational and does not replace individual financial, legal or tax advice.",
       ],
     ],
   },
@@ -277,6 +323,7 @@ const services = {
   },
 };
 
+const offeredServiceKeys = ["corporate", "training"];
 const t = (key, fallback) => window.FanakaTranslate?.(key) || fallback || key;
 const root = () => document.body.dataset.root || "";
 const html = (strings, ...values) =>
@@ -336,22 +383,24 @@ const linkCard = (href, title, copy, iconName = "compass") =>
   `<article class="card" data-reveal data-tilt>${icon(iconName)}<h3>${title}</h3><p>${copy}</p><a class="card-link" href="${href}">${t("cta.learn", "Learn more →")}</a></article>`;
 const serviceCards = () => {
   const serviceIcons = {
-    wealth: "investment",
-    retirement: "calendar",
-    financial: "family",
     corporate: "business",
-    estate: "legacy",
-    insurance: "shield",
+    training: "plan",
   };
-  return Object.entries(services)
-    .map(([key, service]) =>
+  const servicePaths = {
+    corporate: "corporate-trustee",
+    training: "financial-trainings",
+  };
+  return offeredServiceKeys
+    .map((key) => {
+      const service = services[key];
+      return (
       linkCard(
-        `${root()}services/${{ wealth: "wealth-management", retirement: "retirement-planning", financial: "financial-planning", corporate: "corporate-advisory", estate: "estate-succession-planning", insurance: "insurance-advisory" }[key]}.html`,
+        `${root()}services/${servicePaths[key]}.html`,
         t(`service.${key}`, service.title),
         service.intro,
         serviceIcons[key],
-      ),
-    )
+      ));
+    })
     .join("");
 };
 const breadcrumb = (name) =>
@@ -410,24 +459,16 @@ function homeMarkup() {
     <section class="service-intro" id="service-intro">
       <div class="container service-intro__inner">
         <div class="service-intro__copy">
-          <span class="eyebrow">A connected view of your future</span>
-          <h2>Advice across the moments that matter.</h2>
+          <span class="eyebrow">Services built on trust and learning</span>
+          <h2>Corporate Trustee and Financial Trainings.</h2>
         </div>
         <div class="service-intro__areas" aria-label="Our service areas">
-          <a data-tilt href="${root()}services/retirement-planning.html"
-            ><span>01</span><strong>Pension</strong
+          <a data-tilt href="${root()}services/corporate-trustee.html"
+            ><span>01</span><strong>Corporate Trustee</strong
             ><b aria-hidden="true">↗</b></a
           >
-          <a data-tilt href="${root()}services/insurance-advisory.html"
-            ><span>02</span><strong>Insurance</strong
-            ><b aria-hidden="true">↗</b></a
-          >
-          <a data-tilt href="${root()}services/wealth-management.html"
-            ><span>03</span><strong>Investments</strong
-            ><b aria-hidden="true">↗</b></a
-          >
-          <a data-tilt href="${root()}services/corporate-advisory.html"
-            ><span>04</span><strong>Corporate Trustee</strong
+          <a data-tilt href="${root()}services/financial-trainings.html"
+            ><span>02</span><strong>Financial Trainings</strong
             ><b aria-hidden="true">↗</b></a
           >
         </div>
@@ -456,19 +497,19 @@ function homeMarkup() {
           <div class="carousel__viewport">
             <div class="carousel__track" data-carousel-track>
               ${linkCard(
-                `${root()}services/financial-planning.html`,
-                "Individuals & Families",
-                "Build a coordinated plan around your family’s priorities.",
-                "family",
-              )}${linkCard(
-                `${root()}services/corporate-advisory.html`,
-                "Business Owners",
-                "Bring personal and business financial decisions into focus.",
+                `${root()}services/corporate-trustee.html`,
+                "Corporate Trustee",
+                "Trustee support for schemes, trusts and employee benefit arrangements.",
                 "business",
               )}${linkCard(
-                `${root()}services/index.html`,
-                "Institutions & Organisations",
-                "Explore planning and advisory conversations for organisations.",
+                `${root()}services/financial-trainings.html`,
+                "Financial Trainings",
+                "Practical financial learning shaped around your needs.",
+                "plan",
+              )}${linkCard(
+                `${root()}services/financial-trainings.html`,
+                "Training for Organisations",
+                "Financial learning for teams and organisations.",
                 "institution",
               )}
             </div>
@@ -816,7 +857,8 @@ function homeMarkup() {
 }
 
 function serviceMarkup(key) {
-  const item = services[key] || services.wealth;
+  if (!offeredServiceKeys.includes(key)) return generalMarkup("services-index");
+  const item = services[key];
   const serviceTitle =
     window.FanakaLanguage === "sw" ? item.titleSw : item.title;
   const serviceIntro =
@@ -921,9 +963,9 @@ function serviceMarkup(key) {
       </div>
     </section>
     <nav class="mobile-cta" aria-label="Quick contact">
-      <a href="${root()}services/retirement-planning.html">Pension</a
+      <a href="${root()}services/corporate-trustee.html">Trustee</a
       ><a href="${root()}contact.html#booking">Book</a
-      ><a href="${root()}services/wealth-management.html">Invest</a>
+      ><a href="${root()}services/financial-trainings.html">Training</a>
     </nav>`;
 }
 
@@ -1137,10 +1179,10 @@ function generalMarkup(page) {
     return html`<section class="inner-hero">
         <div class="container">
           ${breadcrumb("Services")}<span class="eyebrow">Our services</span>
-          <h1>Advice for the decisions that shape your future.</h1>
+          <h1>Corporate Trustee and Financial Trainings.</h1>
           <p>
-            Explore financial guidance designed around your needs, with clear
-            conversations about suitability, scope and risk.
+            Explore our Corporate Trustee and Financial Trainings services,
+            with clear conversations about scope and your needs.
           </p>
         </div>
       </section>
@@ -1271,8 +1313,15 @@ function generalMarkup(page) {
                 <label for="contact-service">Service of interest</label
                 ><select id="contact-service" name="service">
                   <option>Select a service</option>
-                  ${Object.values(services)
-                    .map((s) => `<option>${s.title}</option>`)
+                  ${offeredServiceKeys
+                    .map((key) => {
+                      const service = services[key];
+                      const title =
+                        window.FanakaLanguage === "sw"
+                          ? service.titleSw
+                          : service.title;
+                      return `<option>${title}</option>`;
+                    })
                     .join("")}
                 </select>
               </div>
@@ -1613,8 +1662,11 @@ export function renderPage(rootPath = "") {
     target.innerHTML = serviceMarkup(page.split(":")[1]);
   else if (legalPages[page]) target.innerHTML = legalMarkup(legalPages[page]);
   else target.innerHTML = generalMarkup(page);
+  const serviceKey = page.startsWith("service:") ? page.split(":")[1] : "";
   const title = page.startsWith("service:")
-    ? services[page.split(":")[1]]?.title
+    ? offeredServiceKeys.includes(serviceKey)
+      ? services[serviceKey]?.title
+      : "Services"
     : legalPages[page]?.title;
   if (title) document.title = `${title} | Fanaka Noblewealth Advisory`;
   document.body.classList.toggle("has-mobile-cta", page.startsWith("service:"));

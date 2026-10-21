@@ -177,6 +177,21 @@
 .mega-column h2 a {
   color: var(--green-800);
 }
+.mega-service-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-self: start;
+  padding: 0.7rem 0.6rem;
+  border-bottom: 1px solid rgb(224 190 106 / 42%);
+  color: var(--green-800);
+  font-size: 1rem;
+  font-weight: 700;
+}
+.mega-service-link:hover,
+.mega-service-link:focus-visible {
+  background: var(--ivory-100);
+}
 .mega-column ul {
   display: grid;
   gap: 0.15rem;
@@ -510,6 +525,11 @@
     gap: 1rem;
   }
   .mega-column li a {
+    padding: 0.55rem 0.35rem;
+    font-size: 0.88rem;
+  }
+  .mega-service-link {
+    align-self: start;
     padding: 0.55rem 0.35rem;
     font-size: 0.88rem;
   }

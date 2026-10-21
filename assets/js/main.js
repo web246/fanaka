@@ -1,6 +1,6 @@
-import { includePartials } from "./include.js";
+import { includePartials } from "./include.js?v=fanaka-brand";
 import { initLanguage } from "./i18n.js";
-import { initNavigation } from "./nav.js";
+import { initNavigation } from "./nav.js?v=fanaka-brand";
 import { initCookies } from "./cookies.js";
 import { initForms } from "./forms.js";
 import { initCalculators } from "./calculators.js";
