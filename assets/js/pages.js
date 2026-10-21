@@ -416,7 +416,8 @@ function homeMarkup() {
         loop
         autoplay
         playsinline
-        preload="metadata"
+        preload="auto"
+        poster="${root()}assets/video/hero-poster.svg"
         aria-hidden="true"
         tabindex="-1"
       >
@@ -585,7 +586,7 @@ function homeMarkup() {
             loop
             autoplay
             playsinline
-            preload="metadata"
+            preload="auto"
             tabindex="-1"
           >
             <source src="${root()}assets/video/difference.mp4" type="video/mp4" />
@@ -1308,7 +1309,26 @@ function generalMarkup(page) {
               conversation is a chance to understand your priorities and the
               guidance you are looking for.
             </p>
-            <div class="feature-image">Fanaka · Nairobi</div>
+            <div class="feature-image feature-image--motion feature-image--video">
+              <video
+                class="feature-image__video"
+                data-contact-video
+                muted
+                loop
+                autoplay
+                playsinline
+                preload="auto"
+                poster="${root()}assets/video/hero-poster.svg"
+                aria-hidden="true"
+                tabindex="-1"
+              >
+                <source
+                  src="${root()}assets/video/contact.mp4"
+                  type="video/mp4"
+                />
+              </video>
+              <span class="feature-image__label">Fanaka · Nairobi</span>
+            </div>
           </div>
         </div>
       </section>
