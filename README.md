@@ -18,7 +18,7 @@ Use VS Code Live Server and open `index.html` through its local server URL. The 
 
 ## Design system
 
-The palette is defined in `assets/css/tokens.css`: deep forest greens, restrained gold, warm ivory, charcoal and white. Cinzel provides an elegant serif display style for headings that echoes the logo wordmark, while Lato keeps body copy and interface text clear and readable. Shared components include gold and outline actions, service cards, accordions, forms, consent preferences, process timelines and CTA bands. The layout is mobile-first and honors reduced-motion preferences.
+The palette is defined in `assets/css/tokens.css`: deep forest greens, restrained gold, warm ivory, charcoal and white. Cinzel is used consistently across headings, body copy, navigation, buttons and form controls to echo the logo wordmark throughout the site. Shared components include gold and outline actions, service cards, accordions, forms, consent preferences, process timelines and CTA bands. The layout is mobile-first and honors reduced-motion preferences.
 
 ## Replace before launch
 
