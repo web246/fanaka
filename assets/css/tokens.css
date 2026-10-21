@@ -17,7 +17,7 @@
     var(--gold-500)
   );
   --font-family: "Lato", sans-serif;
-  --font-display: var(--font-family);
+  --font-display: "Cinzel", Georgia, serif;
   --font-body: var(--font-family);
   --space-1: 0.5rem;
   --space-2: 1rem;
