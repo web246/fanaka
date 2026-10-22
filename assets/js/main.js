@@ -5,7 +5,7 @@ import { initCookies } from "./cookies.js";
 import { initForms } from "./forms.js";
 import { initCalculators } from "./calculators.js";
 import { initAnimations } from "./animations.js";
-import { renderPage } from "./pages.js?v=fanaka-contact-video";
+import { renderPage } from "./pages.js?v=fanaka-static-photos";
 import { initTransitions } from "./transitions.js";
 import { initHeroSlider } from "./hero-slider.js";
 import { initCarousels } from "./carousels.js";
@@ -44,18 +44,9 @@ async function startSite() {
         document.querySelector("[data-hero-video]"),
         "homepage hero video",
       );
-      initLoopingVideo(
-        document.querySelector("[data-difference-video]"),
-        "Fanaka difference video",
-      );
       initHeroSlider();
       initCarousels();
       init3dCarousels();
-    } else if (event.detail?.page === "contact") {
-      initLoopingVideo(
-        document.querySelector("[data-contact-video]"),
-        "Nairobi contact video",
-      );
     }
   });
   renderPage(root);

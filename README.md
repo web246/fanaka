@@ -22,7 +22,7 @@ The palette is defined in `assets/css/tokens.css`: deep forest greens, restraine
 
 ## Replace before launch
 
-- Homepage hero and difference videos play muted and loop continuously. The Contact page uses `assets/video/contact.mp4` as an autoplaying, looping Nairobi card video. Videos request eager preload for faster playback; actual start time still depends on the browser and network. An optimised WebM source can be added if needed.
+- The homepage hero video plays muted and loops continuously. The homepage difference panel and Nairobi card on the Contact page use `assets/img/difference.jpg` and `assets/img/contact.jpg`, respectively.
 - The supplied `assets/img/logo.png` is used throughout the site; `assets/img/favicon.png` uses its matching crest. Replace them only with approved brand artwork.
 - Confirm actual services offered and that each statement matches the firm's authorised scope.
 - Replace `[CLIENT COUNT]`, `[YEARS]`, `[KES X]B` and `[X]%` with substantiated figures, or remove the stats.

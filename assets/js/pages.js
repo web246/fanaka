@@ -579,19 +579,13 @@ function homeMarkup() {
           </div>
         </div>
         <div class="pillar-visual" aria-hidden="true">
-          <video
-            class="pillar-visual__video"
-            data-difference-video
-            muted
-            loop
-            autoplay
-            playsinline
-            preload="auto"
-            tabindex="-1"
-          >
-            <source src="${root()}assets/video/difference.mp4" type="video/mp4" />
-          </video>
-          <span>F</span>
+          <img
+            class="pillar-visual__image"
+            src="${root()}assets/img/difference.jpg"
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       </div>
     </section>
@@ -1309,24 +1303,14 @@ function generalMarkup(page) {
               conversation is a chance to understand your priorities and the
               guidance you are looking for.
             </p>
-            <div class="feature-image feature-image--motion feature-image--video">
-              <video
-                class="feature-image__video"
-                data-contact-video
-                muted
-                loop
-                autoplay
-                playsinline
-                preload="auto"
-                poster="${root()}assets/video/hero-poster.svg"
-                aria-hidden="true"
-                tabindex="-1"
-              >
-                <source
-                  src="${root()}assets/video/contact.mp4"
-                  type="video/mp4"
-                />
-              </video>
+            <div class="feature-image feature-image--motion feature-image--photo">
+              <img
+                class="feature-image__photo"
+                src="${root()}assets/img/contact.jpg"
+                alt="A family spending time together outdoors"
+                loading="lazy"
+                decoding="async"
+              />
               <span class="feature-image__label">Fanaka · Nairobi</span>
             </div>
           </div>
